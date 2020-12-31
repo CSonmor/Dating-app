@@ -4,6 +4,7 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { FileUploadModule } from 'ng2-file-upload';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { ToastrModule } from 'ngx-toastr';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { NgxGalleryModule } from '@kolkov/ngx-gallery';
 import { NgxSpinnerModule } from 'ngx-spinner';
 
@@ -12,6 +13,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
   declarations: [],
   imports: [
     CommonModule,
+    BsDatepickerModule.forRoot(),
     BsDropdownModule.forRoot(),
     FileUploadModule,
     ToastrModule.forRoot({
@@ -22,6 +24,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     NgxSpinnerModule
   ],
   exports: [
+    BsDatepickerModule,
     BsDropdownModule,
     FileUploadModule,
     ToastrModule,
