@@ -6,6 +6,7 @@ using API.Data;
 using API.DTO;
 using API.Entities;
 using API.Extensions;
+using API.Helpers;
 using API.Interfaces;
 using API.Services;
 using AutoMapper;
@@ -31,9 +32,19 @@ namespace API.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<MemberDto>>> GetUsers()
+        public async Task<ActionResult<IEnumerable<MemberDto>>> GetUsers([FromQuery]UserParams userParams)
         {
-            var members = await _userRepository.GetMembersAsync();
+            var user = await _userRepository.GetUserByUsernameAsync(User.GetUserName());
+            userParams.CurrentUsername = user.UserName;
+            if (string.IsNullOrEmpty(userParams.Gender))
+            {
+                if (user.Gender == "male") userParams.Gender = "female";
+                else if (user.Gender == "female") userParams.Gender = "male";
+                else userParams.Gender = "both";
+            }
+            var members = await _userRepository.GetMembersAsync(userParams);
+            Response.AddPaginationHeader(members.CurrentPage, members.PageSize, 
+                members.TotalCount, members.TotalPages);
             return Ok(members);
         }
 
