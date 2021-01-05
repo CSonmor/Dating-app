@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { ButtonsModule } from 'ngx-bootstrap/buttons';
+import { ModalModule } from 'ngx-bootstrap/modal';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 
@@ -19,6 +20,7 @@ import { TimeagoModule } from 'ngx-timeago';
     BsDatepickerModule.forRoot(),
     BsDropdownModule.forRoot(),
     FileUploadModule,
+    ModalModule.forRoot(),
     ToastrModule.forRoot({
       positionClass: 'toast-bottom-right'
     }),
@@ -33,6 +35,7 @@ import { TimeagoModule } from 'ngx-timeago';
     BsDatepickerModule,
     BsDropdownModule,
     FileUploadModule,
+    ModalModule,
     ToastrModule,
     TabsModule,
     NgxGalleryModule,
